@@ -10,7 +10,7 @@ namespace StringCompare
     {
         static void Main(string[] args)
         {
-            string[] Args = { "Daniel" };
+            string[] Args = { "Test" };
             CompareStrings(Args);
             Console.ReadKey();
         }

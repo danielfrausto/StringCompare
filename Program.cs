@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,21 +11,38 @@ namespace StringCompare
     {
         static void Main(string[] args)
         {
-            string[] Args = { "Test" };
-            CompareStrings(Args);
+            
+            List<string> M3uList = new List<string>(){ "Url1","Url2"};
+            CompareStrings(M3uList,"I am String");
             Console.ReadKey();
         }
-        private static void CompareStrings(params string[] stringsToCompare)
+       
+
+        private static void CompareStrings(params dynamic[] StringsToCompare)
         {
-
-            Console.WriteLine("Hello. Starting compareStrings");
-            if (stringsToCompare.Length < 2) { Console.WriteLine("At least 2 strings are needed to compare.");return; }
-
-            foreach (string stringElement in stringsToCompare)
+            Console.WriteLine("Hello. Starting CompareStrings");
+            List<string> stringsList = new List<string>();
+            foreach(dynamic  Element in StringsToCompare)
             {
-                Console.WriteLine(stringElement);
-            }
+                if(Element is List<string>)
+                {
+                    //foreach(string s in (Element as List<string>))
+                    //{
+                    //    //Console.WriteLine(s);
+                    //    CompareStrings(s);
 
+                    //}
+                    stringsList = Element;
+                }else if(Element is string)
+                {
+                    stringsList.Add(Element);
+                }
+            }
+            Console.WriteLine("Printing stringsList needed");
+            foreach(string stringToPrint in stringsList)
+            {
+                Console.WriteLine(stringToPrint);
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace StringCompare
         {
             
             List<string> M3uList = new List<string>(){ "Url1","Url2"};
-            CompareStrings(M3uList,"I am String");
+            CompareStrings(M3uList,"I am String",M3uList,"Test string II");
             Console.ReadKey();
         }
        
@@ -26,13 +26,7 @@ namespace StringCompare
             {
                 if(Element is List<string>)
                 {
-                    //foreach(string s in (Element as List<string>))
-                    //{
-                    //    //Console.WriteLine(s);
-                    //    CompareStrings(s);
-
-                    //}
-                    stringsList = Element;
+                    stringsList.AddRange( Element);
                 }else if(Element is string)
                 {
                     stringsList.Add(Element);

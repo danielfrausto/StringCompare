@@ -20,7 +20,7 @@ namespace StringCompare
 
         private static void CompareStrings(params dynamic[] StringsToCompare)
         {
-            Console.WriteLine("Hello. Starting CompareStrings");
+            Console.WriteLine(AppStrings.VoidCompareStrings);
             List<string> stringsList = new List<string>();
             foreach(dynamic  Element in StringsToCompare)
             {
@@ -32,7 +32,7 @@ namespace StringCompare
                     stringsList.Add(Element);
                 }
             }
-            Console.WriteLine("Printing stringsList needed");
+            Console.WriteLine(AppStrings.PrintStringNeeded);
             foreach(string stringToPrint in stringsList)
             {
                 Console.WriteLine(stringToPrint);

@@ -22,7 +22,7 @@ namespace StringCompare
         {
             //  Check if there's more 2 or more strings to compare.
             if (StringsToCompare.Count() < 2 && !(StringsToCompare[0] is List<string>)) {
-                Console.WriteLine("2 or more strings needed to use CompareStrings()");
+                Console.WriteLine(AppStrings.CompareStringsWarning);
                 return;
             }
 
@@ -45,32 +45,41 @@ namespace StringCompare
                 //  bool to detect difference in string
                 bool differenceDetected = false;
 
-                string Primary = (stringsList[x].Length <= stringsList[x + 1].Length) ? stringsList[x] : stringsList[x + 1];
-                string Secondary = (stringsList[x].Length > stringsList[x + 1].Length) ? stringsList[x] : stringsList[x + 1];
-                //Console.WriteLine( "~:  Primary = "+Primary + " | Secondary = "+Secondary);
+                string Primary = (stringsList[x].Length >= stringsList[x + 1].Length) ? stringsList[x] : stringsList[x + 1];
+                string Secondary = (stringsList[x].Length < stringsList[x + 1].Length) ? stringsList[x] : stringsList[x + 1];
+                
+                //  Just to check propper string was set as Primary/Secondary. Comment out to not print line.
+                //Console.WriteLine( "~:  Primary = "+Primary.Length + " | Secondary = "+Secondary.Length);
 
                 //  Start to compare strings
                 string Same = string.Empty;
                 string []differeces = {string.Empty,string.Empty };
-                for(int i = 0; i < Primary.Length; i++)
+                for(int i =0; i < Primary.Length; i++)
                 {
-                    if(Primary[i] == Secondary[i] && differenceDetected == false)
+                    if (i < Secondary.Length)
                     {
-                        Same = Same + Primary[i];
-                    }
-                    else
-                    {
-                        differenceDetected = true;
-                    }
-                    if (differenceDetected == true)
+                        if (Primary[i] == Secondary[i] && differenceDetected == false)
+                        {
+                            Same = Same + Primary[i];
+                        }
+                        else
+                        {
+                            differenceDetected = true;
+                        }
+                        if (differenceDetected == true)
+                        {
+                            differeces[0] = differeces[0] + Primary[i].ToString();
+                            differeces[1] = differeces[1] + Secondary[i].ToString();
+                        }
+                    }else if (i >= Secondary.Length)
                     {
                         differeces[0] = differeces[0] + Primary[i].ToString();
-                        differeces[1] = differeces[1] + Secondary[i].ToString();
                     }
                 }
-                        Console.WriteLine("Same: "+Same);
-                        Console.WriteLine("Difference A: " + differeces[0]);
-                        Console.WriteLine("Difference B: " + differeces[1]);
+
+                Console.WriteLine("Same: "+ Same);
+                Console.WriteLine("Difference A: " + differeces[0]);
+                Console.WriteLine("Difference B: " + differeces[1]);
             }
         }
     }

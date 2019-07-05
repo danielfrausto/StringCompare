@@ -40,11 +40,37 @@ namespace StringCompare
             }
 
             //  Setup string containers
-            for(int x = 0; x < stringsList.Count()-1; x++)
+            for(int x = 0; x <= stringsList.Count()-2; x++)
             {
+                //  bool to detect difference in string
+                bool differenceDetected = false;
+
                 string Primary = (stringsList[x].Length <= stringsList[x + 1].Length) ? stringsList[x] : stringsList[x + 1];
                 string Secondary = (stringsList[x].Length > stringsList[x + 1].Length) ? stringsList[x] : stringsList[x + 1];
-                Console.WriteLine( "~:  Primary = "+Primary + " | Secondary = "+Secondary);
+                //Console.WriteLine( "~:  Primary = "+Primary + " | Secondary = "+Secondary);
+
+                //  Start to compare strings
+                string Same = string.Empty;
+                string []differeces = {string.Empty,string.Empty };
+                for(int i = 0; i < Primary.Length; i++)
+                {
+                    if(Primary[i] == Secondary[i] && differenceDetected == false)
+                    {
+                        Same = Same + Primary[i];
+                    }
+                    else
+                    {
+                        differenceDetected = true;
+                    }
+                    if (differenceDetected == true)
+                    {
+                        differeces[0] = differeces[0] + Primary[i].ToString();
+                        differeces[1] = differeces[1] + Secondary[i].ToString();
+                    }
+                }
+                        Console.WriteLine("Same: "+Same);
+                        Console.WriteLine("Difference A: " + differeces[0]);
+                        Console.WriteLine("Difference B: " + differeces[1]);
             }
         }
     }

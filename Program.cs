@@ -76,10 +76,12 @@ namespace StringCompare
                         differeces[0] = differeces[0] + Primary[i].ToString();
                     }
                 }
-
-                Console.WriteLine(AppStrings.SameIndicator + Same);
-                Console.WriteLine(AppStrings.DifferenceIndicatorA + differeces[0]);
-                Console.WriteLine(AppStrings.DifferenceIndicatorB + differeces[1]);
+                if (Same != "")
+                {
+                    Console.WriteLine(AppStrings.SameIndicator + Same);
+                    Console.WriteLine(AppStrings.DifferenceIndicatorA + differeces[0]);
+                    Console.WriteLine(AppStrings.DifferenceIndicatorB + differeces[1]);
+                }
             }
         }
     }

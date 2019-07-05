@@ -77,9 +77,9 @@ namespace StringCompare
                     }
                 }
 
-                Console.WriteLine("Same: "+ Same);
-                Console.WriteLine("Difference A: " + differeces[0]);
-                Console.WriteLine("Difference B: " + differeces[1]);
+                Console.WriteLine(AppStrings.SameIndicator + Same);
+                Console.WriteLine(AppStrings.DifferenceIndicatorA + differeces[0]);
+                Console.WriteLine(AppStrings.DifferenceIndicatorB + differeces[1]);
             }
         }
     }

@@ -16,7 +16,6 @@ namespace StringCompare
             CompareStrings(M3uList,"I am String",M3uList,"Test string II");
             Console.ReadKey();
         }
-       
 
         private static void CompareStrings(params dynamic[] StringsToCompare)
         {
@@ -52,15 +51,15 @@ namespace StringCompare
                 //Console.WriteLine( "~:  Primary = "+Primary.Length + " | Secondary = "+Secondary.Length);
 
                 //  Start to compare strings
-                string Same = string.Empty;
-                string []differeces = {string.Empty,string.Empty };
+                string outputSame = string.Empty;
+                string []differeces = AppContainers.Differences;
                 for(int i =0; i < Primary.Length; i++)
                 {
                     if (i < Secondary.Length)
                     {
                         if (Primary[i] == Secondary[i] && differenceDetected == false)
                         {
-                            Same = Same + Primary[i];
+                            outputSame = outputSame + Primary[i];
                         }
                         else
                         {
@@ -76,9 +75,9 @@ namespace StringCompare
                         differeces[0] = differeces[0] + Primary[i].ToString();
                     }
                 }
-                if (Same != "")
+                if (outputSame != "")
                 {
-                    Console.WriteLine(AppStrings.SameIndicator + Same);
+                    Console.WriteLine(AppStrings.SameIndicator + outputSame);
                     Console.WriteLine(AppStrings.DifferenceIndicatorA + differeces[0]);
                     Console.WriteLine(AppStrings.DifferenceIndicatorB + differeces[1]);
                 }
